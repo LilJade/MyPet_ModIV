@@ -1,0 +1,61 @@
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: none;
+    height: 10vh;
+}
+
+.navBar .options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    list-style: none;;
+}
+
+.navBar .options .section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+}
+
+.navBar .options .section img {
+    width: 60px;
+    margin: 0 30px;
+    cursor: pointer;
+}
+
+.navBar .options .section.left {
+    justify-content: left;
+}
+
+.navBar .options .section.right {
+    justify-content: right;
+}
+
+.navBar .options .section li {
+    margin: 0 10px;
+    transition: transform .2s;
+}
+
+.navBar .options .section li:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.navBar .options .section li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #FFF;
+}
+
+.navBar .options .section li a:hover {
+    cursor: pointer;
+}
+
