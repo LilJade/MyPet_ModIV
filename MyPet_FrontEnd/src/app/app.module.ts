@@ -8,13 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import { RegistroUsuarioComponent } from './registroUsuario/registroUsuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     NavBarComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroUsuarioComponent
   ],
   
   imports: [
