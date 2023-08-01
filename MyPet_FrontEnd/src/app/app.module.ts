@@ -12,6 +12,7 @@ import { RegistroUsuarioComponent } from './registroUsuario/registroUsuario.comp
 import { UsuarioPerfilComponent } from './usuarioPerfil/usuarioPerfil.component';
 import { MyPetComponent } from './myPet/myPet.component';
 import { AddPetComponent } from './addPet/addPet.component';
+import { EditUserComponent } from './editUser/editUser.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddPetComponent } from './addPet/addPet.component';
     RegistroUsuarioComponent,
     UsuarioPerfilComponent,
     MyPetComponent,
-    AddPetComponent
+    AddPetComponent,
+    EditUserComponent
   ],
   
   imports: [
