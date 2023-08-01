@@ -10,6 +10,8 @@ import { NavBarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroUsuarioComponent } from './registroUsuario/registroUsuario.component';
 import { UsuarioPerfilComponent } from './usuarioPerfil/usuarioPerfil.component';
+import { MyPetComponent } from './myPet/myPet.component';
+import { AddPetComponent } from './addPet/addPet.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UsuarioPerfilComponent } from './usuarioPerfil/usuarioPerfil.component'
     NavBarComponent,
     LoginComponent,
     RegistroUsuarioComponent,
-    UsuarioPerfilComponent
+    UsuarioPerfilComponent,
+    MyPetComponent,
+    AddPetComponent
   ],
   
   imports: [

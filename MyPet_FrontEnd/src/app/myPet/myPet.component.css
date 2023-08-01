@@ -1,0 +1,134 @@
+.myPetConfig {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+}
+
+.myPetConfig .pickPet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 70vh;
+    border: 2px solid #FFF;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.myPetConfig .pickPet img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.myPetConfig .dataPet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 70vh;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin: 0 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.myPetConfig .dataPet .frmPet {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+}
+
+.myPetConfig .dataPet .frmPet h5 {
+    font-size: 24px;
+    width: 80%;
+    text-align: center;
+}
+
+.myPetConfig .dataPet .frmPet .txtInput {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 18px;
+    margin: 10px 0;
+    border: 2px solid #FFF;
+    cursor: text;
+}
+
+.myPetConfig .dataPet .frmPet .txtInput::placeholder {
+    color: #4F4557;
+}
+
+.myPetConfig .dataPet .frmPet input[type="submit"] {
+    border-radius: 40px;
+    border: 2px solid #FFF;
+    padding: 15px;
+    background-color: green;
+    width: 80%;
+    font-size: 18px;
+    font-weight: bold;;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.myPetConfig .dataPet .frmPet input[type="submit"]:hover {
+    border-color: green;
+    background-color: #FFF;
+    transform: scale(1.05);
+    color:#000;
+}
+
+.myPetConfig .dataPet .frmPet .selectStyled {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 18px;
+    margin: 10px 0;
+    border: 2px solid #FFF;
+}
+
+.myPetConfig .optionsPet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 70vh;
+    border: 2px solid #FFF;
+    background-color: rgba(255, 255, 255, 0.2);;
+    border-radius: 10px;
+}
+
+.myPetConfig .optionsPet .btnOP {
+    border-radius: 10px;
+    border: 2px solid #FFF;
+    padding: 10px;
+    width: 80%;
+    margin: 20px 0;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 18px;
+    transition: all ease .2s;
+}
+
+.myPetConfig .optionsPet .btnOP:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    font-weight: bold;
+    color: #FFF;
+}
+
+.myPetConfig .optionsPet .btnOP.Del:hover {
+    color: red;
+    border-color: red;
+}
+
