@@ -1,0 +1,208 @@
+.bodyCover {
+    width: 100%;
+    height: 100%;
+    background-color: beige;
+}
+
+.bodyCover .myInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 30vh;
+    padding: 30px;
+}
+
+.bodyCover .myInfo img {
+    width: 10vw;
+}
+
+.bodyCover .myInfo .dataUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 100px;
+}
+
+.bodyCover .myInfo .dataUser h3 {
+    font-weight: bold;
+    font-size: 64px;
+}
+
+.bodyCover .myInfo .dataUser div {
+    width: 50%;
+}
+
+.bodyCover .myInfo .dataUser div span {
+    color: #494949;
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.bodyCover .myInfo .options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+}
+
+.bodyCover .myInfo .options .btn {
+    border: none;
+    border-radius: 10px;
+    background-color: none;
+    width: 80%;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: all .2s;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.edit {
+    background-color: #DFA500;
+}
+
+.delete {
+    background-color: #BB0000;
+}
+
+.edit:hover {
+    background-color: #F0BD2B;
+}
+
+.delete:hover {
+    background-color: #D72323;
+}
+
+.btn:hover {
+    color: #000;
+    transform: scale(1.1);
+}
+
+hr {
+    width: 90%;
+    border: 4px solid #5A01A4;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.myPets {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.myPets .petsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+.myPets .petsContainer .cardPet {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;;
+    margin: 30px 30px;
+    border: 2px dashed #000;
+    border-radius: 10px;
+    background-color: #FFF;
+    -webkit-box-shadow: 15px 15px 21px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 15px 15px 21px -5px rgba(0,0,0,0.75);
+    box-shadow: 15px 15px 21px -5px rgba(0,0,0,0.75);
+    transition: all ease .2s;
+}
+
+.myPets .petsContainer .cardPet:hover {
+    transform: scale(1.1);
+}
+
+.myPets .petsContainer .cardPet .optionsPet {
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all ease .2s;
+    cursor: pointer;
+    -webkit-box-shadow: 15px 15px 21px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 15px 15px 21px -5px rgba(0,0,0,0.75);
+    box-shadow: 15px 15px 21px -5px rgba(0,0,0,0.75);
+    padding: 0;
+    width: 3vw;
+}
+
+.myPets .petsContainer .cardPet .optionsPet:hover {
+    transform: scale(1.1);
+}
+
+.myPets .petsContainer .cardPet .optionsPet img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.myPets .petsContainer .cardPet img {
+    width: 12vw;
+}
+
+.myPets .petsContainer .cardPet h4 {
+    font-size: 20px;
+    font-weight: bold;;
+}
+
+.myPets .petsContainer .cardPet span {
+    color: #303030;
+}
+
+.myPets .petsContainer .cardPet .age {
+    font-size: 14px;
+}
+
+.myPets .petsContainer .cardPet div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: greenyellow;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.petsOptionsCrud {
+    padding: 20px;
+}
+
+.btnAddPet {
+    background-color: green;
+    color: #FFF;
+    border: 2px solid #FFF;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 18px;
+    transition: all ease .2s;
+    cursor: pointer;
+}
+
+.btnAddPet:hover {
+    border-color: green;
+    background-color: #FFF;
+    color: green;
+    transform: scale(1.1);
+}
+
+
+
