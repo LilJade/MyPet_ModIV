@@ -13,6 +13,7 @@ import { UsuarioPerfilComponent } from './usuarioPerfil/usuarioPerfil.component'
 import { MyPetComponent } from './myPet/myPet.component';
 import { AddPetComponent } from './addPet/addPet.component';
 import { EditUserComponent } from './editUser/editUser.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditUserComponent } from './editUser/editUser.component';
     UsuarioPerfilComponent,
     MyPetComponent,
     AddPetComponent,
-    EditUserComponent
+    EditUserComponent,
+    AdminComponent
   ],
   
   imports: [

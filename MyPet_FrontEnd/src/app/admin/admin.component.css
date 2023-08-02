@@ -1,0 +1,65 @@
+.container {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    color: #FFF;
+}
+
+.container h2 {
+    font-weight: bold;
+    font-size: 48px;
+    color: #FFF;
+    margin-bottom: 40px;
+}
+
+.container .cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+
+.container .cards .cardUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.container .cards .cardUser img {
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.container .cards .cardUser h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.container .cards .cardUser .btn {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    border:2px solid #FFF;
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 10px;;
+    color: #FFF;
+    transition: all ease .2s;
+}
+
+.container .cards .cardUser .btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
