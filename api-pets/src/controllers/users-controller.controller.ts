@@ -16,6 +16,7 @@ export class UsersController {
    * @param user Datos del usuario a crear.
    * @returns El usuario creado.
    */
+
   @post('/api')
   @response(200, {
     description: 'Users model instance',
@@ -41,18 +42,27 @@ export class UsersController {
   }
 
   /**
-  * Endpoint para el inicio de sesión.
-  *
-  * @param credentials
-  * @returns
-  * @throws
-  */
+   * Iniciar sesión de usuario.
+   *
+   * @operation('post', '/login') <-- Agregar esta anotación para especificar el endpoint y el verbo HTTP
+   *
+   * Este endpoint se utiliza para autenticar a los usuarios mediante su correo electrónico y contraseña.
+   * Al recibir las credenciales, verifica si el usuario existe y si la contraseña es correcta.
+   * Si la autenticación es exitosa, devuelve un mensaje de éxito junto con el objeto completo del usuario.
+   *
+   * @param credentials - Un objeto que contiene el correo electrónico y la contraseña del usuario.
+   * @returns Un objeto con un mensaje de éxito y el objeto completo del usuario si la autenticación es exitosa.
+   * @throws HttpErrors.Unauthorized - Si las credenciales son incorrectas o el usuario no existe.
+   */
+
+
   @post('/login')
-  @response(200, {description: 'Mensaje de éxito', content: {'application/json': {schema: {type: 'object', properties: {message: {type: 'string'}}}}}})
+
+  @response(200, {description: 'Mensaje de éxito', content: {'application/json': {schema: {type: 'object', properties: {message: {type: 'string'}, user: {type: 'object'}}}}}})
   @response(401, {description: 'No autorizado', content: {'application/json': {schema: {type: 'object', properties: {error: {type: 'string'}}}}}})
   async login(
     @requestBody() credentials: {email: string, password: string},
-  ): Promise<{message: string}> {
+  ): Promise<{message: string, user: Users}> {
     const {email, password} = credentials;
 
     const user = await this.usersRepository.findOne({where: {email}});
@@ -68,7 +78,8 @@ export class UsersController {
       throw new HttpErrors.Unauthorized('Correo electrónico o contraseña incorrecta');
     }
 
-    return {message: 'Inicio de sesión exitoso'};
+
+    return {message: 'Inicio de sesión exitoso', user: user};
   }
 
   @get('/api/all')

@@ -1,11 +1,11 @@
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
+import {RepositoryMixin} from '@loopback/repository';
+import {RestApplication} from '@loopback/rest';
 import {
   RestExplorerBindings,
   RestExplorerComponent,
 } from '@loopback/rest-explorer';
-import {RepositoryMixin} from '@loopback/repository';
-import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
@@ -29,6 +29,15 @@ export class ApiPetsApplication extends BootMixin(
       path: '/explorer',
     });
     this.component(RestExplorerComponent);
+
+    // Configure the Swagger UI theme
+    this.configure(RestExplorerBindings.CONFIG).to({
+      path: '/explorer',
+      uiConfig: {
+        darkMode: true, // Habilitar modo oscuro
+        theme: 'dark', // Puedes personalizar el tema aquí o usar 'dark' o 'light'
+      },
+    });
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here
