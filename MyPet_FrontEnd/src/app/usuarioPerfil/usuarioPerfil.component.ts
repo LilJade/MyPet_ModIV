@@ -2,11 +2,24 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { SwitchService } from "../services/switch.service";
+import { animate, state, style, transition, trigger } from "@angular/animations";
 
 @Component({
     selector: 'app-usuarioPerfil',
     templateUrl: './usuarioPerfil.component.html',
-    styleUrls: ['./usuarioPerfil.component.css']
+    styleUrls: ['./usuarioPerfil.component.css'],
+    animations: [
+      trigger('enterState', [
+        state('void', style({
+          opacity: 0
+        })),
+        transition(':enter', [
+          animate(700, style({
+            opacity: 1
+          }))
+        ])
+      ])
+    ]
 })
 
 export class UsuarioPerfilComponent implements OnInit {

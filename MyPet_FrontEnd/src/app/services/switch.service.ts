@@ -9,5 +9,6 @@ export class SwitchService {
 
   $modalEliminarUser = new EventEmitter<any>();
   $modalEliminarPet = new EventEmitter<any>();
+  $userLogin = new EventEmitter<any>();
   
 }

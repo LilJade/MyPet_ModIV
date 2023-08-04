@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from "@angular/animations";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -6,7 +7,19 @@ import { ActivatedRoute } from "@angular/router";
 @Component({
     selector: 'app-editUser',
     templateUrl: './editUser.component.html',
-    styleUrls: ['./editUser.component.css']
+    styleUrls: ['./editUser.component.css'],
+    animations: [
+      trigger('enterState', [
+        state('void', style({
+          opacity: 0
+        })),
+        transition(':enter', [
+          animate(400, style({
+            opacity: 1
+          }))
+        ])
+      ])
+    ]
 })
 
 export class EditUserComponent implements OnInit {

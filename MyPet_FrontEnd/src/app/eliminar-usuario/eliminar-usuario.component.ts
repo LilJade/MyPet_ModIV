@@ -2,11 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { SwitchService } from '../services/switch.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-eliminar-usuario',
   templateUrl: './eliminar-usuario.component.html',
-  styleUrls: ['./eliminar-usuario.component.css']
+  styleUrls: ['./eliminar-usuario.component.css'],
+  animations: [
+    trigger('enterState', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition(':enter', [
+        animate(400, style({
+          opacity: 1
+        }))
+      ])
+    ])
+  ]
 })
 export class EliminarUsuarioComponent implements OnInit {
 

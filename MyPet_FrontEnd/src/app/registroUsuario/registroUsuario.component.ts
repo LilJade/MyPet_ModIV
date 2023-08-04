@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from "@angular/animations";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -5,7 +6,19 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 @Component({
     selector: 'app-registroUsuario',
     templateUrl: './registroUsuario.component.html',
-    styleUrls: ['./registroUsuario.component.css']
+    styleUrls: ['./registroUsuario.component.css'],
+    animations: [
+      trigger('enterState', [
+        state('void', style({
+          opacity: 0
+        })),
+        transition(':enter', [
+          animate(500, style({
+            opacity: 1
+          }))
+        ])
+      ])
+    ]
 })
 
 export class RegistroUsuarioComponent implements OnInit {

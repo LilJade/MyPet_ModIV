@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from "@angular/animations";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -5,7 +6,19 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css'],
+    animations: [
+      trigger('enterState', [
+        state('void', style({
+          opacity: 0
+        })),
+        transition(':enter', [
+          animate(500, style({
+            opacity: 1
+          }))
+        ])
+      ])
+    ]
 })
 
 export class LoginComponent implements OnInit {
@@ -13,7 +26,7 @@ export class LoginComponent implements OnInit {
   formulario: FormGroup ;
   datos: string;
 
-  constructor(private formBuilder: FormBuilder,private http: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
   ngOnInit() {
     this.initForm();

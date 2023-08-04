@@ -1,6 +1,6 @@
 <div class="bodyy">
     <div class="principal">
-        <div class="container" id="log">
+        <div class="container" id="log" @enterState>
             <div class="panel leftInit" id="lL">
                 <h3>EDITAR</h3>
                 <span>Editar mi información</span>
@@ -11,6 +11,7 @@
                     <input formControlName="password" type="password" class="txtInput" placeholder="Repite tu contraseña">
                     <input type="submit" value="Actualizar mis datos">
                 </form>
+                <a routerLink="/user_profile/{{idUser}}">Volver</a>
             </div>
         </div>
     </div>

@@ -2,11 +2,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { SwitchService } from '../services/switch.service';
 import { ActivatedRoute } from '@angular/router';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-eliminar-pet',
   templateUrl: './eliminar-pet.component.html',
-  styleUrls: ['./eliminar-pet.component.css']
+  styleUrls: ['./eliminar-pet.component.css'],
+  animations: [
+    trigger('enterState', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition(':enter', [
+        animate(400, style({
+          opacity: 1
+        }))
+      ])
+    ])
+  ]
 })
 export class EliminarPetComponent {
   modalSwitch: boolean;

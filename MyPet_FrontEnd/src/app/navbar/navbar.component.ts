@@ -6,4 +6,9 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ['./navbar.component.css']
 })
 
-export class NavBarComponent {}
+export class NavBarComponent implements OnInit {
+
+    ngOnInit(): void {
+        
+    }
+}
