@@ -17,17 +17,15 @@ export class AddPetComponent implements OnInit{
     constructor(private formBuilder: FormBuilder, private http: HttpClient, private route: ActivatedRoute) {}
 
     ngOnInit() {
-        this.initForm();
-
-        
+        this.initForm();        
     }
 
     initForm() {
 
         this.route.params.subscribe(params => {
             this.idUser=params['id'];
-            console.log(this.idUser)
           })
+
         this.frmAddPet = this.formBuilder.group({
           namePet: ['', [Validators.required, Validators.email]],
           raza: ['', [Validators.required]],

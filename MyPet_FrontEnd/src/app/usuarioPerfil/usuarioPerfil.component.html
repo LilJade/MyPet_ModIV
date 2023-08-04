@@ -9,21 +9,22 @@
         </div>
         <div class="options">
             <span>Configuraciones:</span>
-            <button routerLink="/edit_user" class="btn edit">Editar mi perfil</button>
-            <button class="btn delete">Eliminar mi perfil</button>
+            <button routerLink="/edit_user/{{idUser}}" class="btn edit">Editar mi perfil</button>
+            <button (click)="openModal()" class="btn delete">Eliminar mi perfil</button>
         </div>
     </div>
     <hr>
     <div class="myPets">
         <div class="petsContainer">
             <div class="cardPet" *ngFor="let mascota of mascotas">
-                <button routerLink="/my_pet" class="optionsPet">
+                <button routerLink="/{{idUser}}/my_pet/{{mascota.id}}" class="optionsPet">
                     <img src="../../assets/imgs/edit.png" tittle="Editar info." alt="">
                 </button>
                 <img src="../../assets/imgs/perro.png" alt="">
                 <h4>{{mascota.namePet}}</h4>
                 <span class="raza">{{mascota.raza}}</span>
                 <span class="age">{{mascota.description}}</span>
+                <span hidden="true">{{mascota.id}}</span>
                 <div>
                     <span>{{mascota.state}}</span>
                 </div>
@@ -45,4 +46,7 @@
             <button class="btnAddPet" routerLink="/add_pet/{{usuario.id}}">Agregar una nueva mascota</button>
         </div>
     </div>
+</div>
+<div *ngIf="modalSwitch == true">
+    <app-eliminar-usuario></app-eliminar-usuario>
 </div>

@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { SwitchService } from "../services/switch.service";
 
 @Component({
     selector: 'app-usuarioPerfil',
@@ -10,13 +11,18 @@ import { ActivatedRoute } from "@angular/router";
 
 export class UsuarioPerfilComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  modalSwitch: boolean;
+  
+  constructor(private http: HttpClient, private route: ActivatedRoute, private modalSS: SwitchService) { }
 
   usuario:any;
   idUser:string;
   mascotas: any[];
 
   ngOnInit(): void {
+
+    this.modalSS.$modalEliminarUser.subscribe((valor) => this.modalSwitch = valor);
+
     this.route.params.subscribe(params => {
       this.idUser=params['id'];
     })
@@ -42,6 +48,10 @@ export class UsuarioPerfilComponent implements OnInit {
             this.mascotas = data;
         }
     )
+  }
+
+  openModal() {
+    this.modalSwitch = true;
   }
 
 }

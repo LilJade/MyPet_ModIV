@@ -14,6 +14,8 @@ import { MyPetComponent } from './myPet/myPet.component';
 import { AddPetComponent } from './addPet/addPet.component';
 import { EditUserComponent } from './editUser/editUser.component';
 import { AdminComponent } from './admin/admin.component';
+import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
+import { EliminarPetComponent } from './eliminar-pet/eliminar-pet.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AdminComponent } from './admin/admin.component';
     MyPetComponent,
     AddPetComponent,
     EditUserComponent,
-    AdminComponent
+    AdminComponent,
+    EliminarUsuarioComponent,
+    EliminarPetComponent
   ],
   
   imports: [

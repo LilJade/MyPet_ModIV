@@ -99,7 +99,7 @@ export class UsersController {
   @response(401, {description: 'No autorizado', content: {'application/json': {schema: {type: 'object', properties: {error: {type: 'string'}}}}}})
   async login(
     @requestBody() credentials: {email: string, password: string},
-  ): Promise<{user: string | undefined}> {
+  ): Promise<{user: String | undefined}> {
     const {email, password} = credentials;
 
     const user = await this.usersRepository.findOne({where: {email}});

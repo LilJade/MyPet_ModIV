@@ -3,23 +3,28 @@
         <img src="../../assets/imgs/perro.png" alt="">
     </div>
     <div class="dataPet">
-        <form action="" class="frmPet">
+        <form [formGroup]="frmEditPet" (ngSubmit)="onSubmit()" class="frmPet">
             <h5>Actualiza los datos de tu mejor amigo!</h5>
-            <input type="text" name="" id="" class="txtInput" placeholder="Nombre de mi mascota">
-            <input type="text" name="" id="" class="txtInput" placeholder="Raza de mi mascota">
-            <input type="text" name="" id="" class="txtInput" placeholder="Edad de mi mascota">
-            <label for="">Estado actual de mi mascota:</label>
+            <input type="text" formControlName="namePet" name="" id="" class="txtInput" placeholder="Nombre de mi mascota">
+            <input type="text" formControlName="raza" name="" id="" class="txtInput" placeholder="Raza de mi mascota">
+            <input type="text" formControlName="state" name="" id="" class="txtInput" placeholder="Estado de mi mascota">
+            <input type="text" formControlName="description" name="" id="" class="txtInput" placeholder="Descripción del estado...">
+<!--            <label for="">Estado actual de mi mascota:</label>
             <select name="" id="" class="selectStyled">
                 <option value="">SALUDABLE</option>
                 <option value="">ENFERMO</option>
                 <option value="">EN TRATAMIENTO</option>
-            </select>
+            </select>-->
 
             <input type="submit" value="GUARDAR CAMBIOS">
         </form>
     </div>
     <div class="optionsPet">
         <button class="btnOP" routerLink="/user_profile">Volver a mi perfil</button>
-        <button class="btnOP Del">Eliminar mascota</button>
+        <button (click)="openModal()" class="btnOP Del">Eliminar mascota</button>
     </div>
+</div>
+
+<div *ngIf="modalSwitch == true">
+    <app-eliminar-pet></app-eliminar-pet>
 </div>

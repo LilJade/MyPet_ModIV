@@ -15,9 +15,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registro_usuario', component: RegistroUsuarioComponent},
   {path: 'user_profile/:id', component: UsuarioPerfilComponent},
-  {path: 'my_pet', component: MyPetComponent},
+  {path: ':id/my_pet/:pet', component: MyPetComponent},
   {path: 'add_pet/:id', component: AddPetComponent},
-  {path: 'edit_user', component: EditUserComponent},
+  {path: 'edit_user/:id', component: EditUserComponent},
   {path: 'admin', component: AdminComponent}
 ];
 

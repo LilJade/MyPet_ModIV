@@ -1,0 +1,49 @@
+.modalCover {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    ;
+}
+
+.modalCover .opciones {
+    width: 50%;
+    height: 30vh;
+    background-color: #FFF;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modalCover .opciones .btn {
+    border: 4px solid #FFF;
+    background-color: none;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease .2s;
+    padding: 10px;
+    width: 35%;
+    height: 8vh;
+}
+
+.modalCover .opciones .btn:hover {
+    transform: scale(1.1);
+    font-weight: bold;
+}
+
+.modalCover .opciones .btn.close {
+    border-color: goldenrod;
+}
+
+.modalCover .opciones .btn.del {
+    border-color: red;
+}
