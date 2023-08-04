@@ -1,5 +1,6 @@
+import {patch} from '@loopback/openapi-v3';
 import {repository} from '@loopback/repository';
-import {HttpErrors, get, getModelSchemaRef, post, requestBody, response} from '@loopback/rest';
+import {HttpErrors, del, get, getModelSchemaRef, param, post, requestBody, response} from '@loopback/rest';
 import * as bcrypt from 'bcryptjs';
 import {Users} from '../models';
 import {UsersRepository} from '../repositories';
@@ -17,9 +18,9 @@ export class UsersController {
    * @returns El usuario creado.
    */
 
-  @post('/api')
+  @post('createuser/api')
   @response(200, {
-    description: 'Users model instance',
+    description: 'crear un usuario',
     content: {'application/json': {schema: getModelSchemaRef(Users)}},
   })
   async create(
@@ -41,20 +42,55 @@ export class UsersController {
     return user;
   }
 
-  /**
-   * Iniciar sesión de usuario.
-   *
-   * @operation('post', '/login') <-- Agregar esta anotación para especificar el endpoint y el verbo HTTP
-   *
-   * Este endpoint se utiliza para autenticar a los usuarios mediante su correo electrónico y contraseña.
-   * Al recibir las credenciales, verifica si el usuario existe y si la contraseña es correcta.
-   * Si la autenticación es exitosa, devuelve un mensaje de éxito junto con el objeto completo del usuario.
-   *
-   * @param credentials - Un objeto que contiene el correo electrónico y la contraseña del usuario.
-   * @returns Un objeto con un mensaje de éxito y el objeto completo del usuario si la autenticación es exitosa.
-   * @throws HttpErrors.Unauthorized - Si las credenciales son incorrectas o el usuario no existe.
-   */
 
+  @patch('/api/users/{id}')
+  async updatePartialUserById(
+    @param.path.string('id') id: string,
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(Users, {partial: true}),
+        },
+      },
+    }) user: Partial<Users>,
+  ): Promise<Users | null> {
+    const existingUser = await this.usersRepository.findById(id);
+
+    if (!existingUser) {
+      throw new HttpErrors.NotFound('Usuario no encontrado');
+    }
+
+
+    if (user.password) {
+      user.password = await bcrypt.hash(user.password, 10);
+    }
+
+
+    await this.usersRepository.updateById(id, user);
+
+
+    const updatedUser = await this.usersRepository.findById(id);
+
+    return updatedUser || null;
+  }
+
+
+  @del('/api/users/{id}')
+  @response(204, {
+    description: 'User DELETE success',
+  })
+  async deleteUserById(@param.path.string('id') id: string): Promise<boolean> {
+    const user = await this.usersRepository.findById(id);
+
+    if (!user) {
+      throw new HttpErrors.NotFound('Usuario no encontrado');
+    }
+
+    await this.usersRepository.deleteById(id);
+
+    // Devolver true para indicar que el usuario fue eliminado exitosamente
+    return true;
+  }
 
   @post('/login')
 
@@ -84,7 +120,7 @@ export class UsersController {
 
   @get('/api/all')
   @response(200, {
-    description: 'Endpoint para obtener todos los usuarios',
+    description: 'Endpoint to get all users',
     content: {
       'application/json': {
         schema: {
@@ -95,10 +131,19 @@ export class UsersController {
     },
   })
   async find(): Promise<Users[]> {
-    const filter = {
-      include: [{relation: 'pets'}],
-    };
-
-    return this.usersRepository.find(filter);
+    return this.usersRepository.find();
   }
+
+  @get('/api/users/{id}')
+  async findUserById(@param.path.string('id') id: string): Promise<Users> {
+    const user = await this.usersRepository.findById(id);
+
+    if (!user) {
+      throw new HttpErrors.NotFound('Usuario no encontrado');
+    }
+
+    return user;
+  }
+
+
 }

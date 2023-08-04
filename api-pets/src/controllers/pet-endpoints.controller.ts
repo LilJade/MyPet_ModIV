@@ -1,13 +1,12 @@
 import {
-  Count,
-  CountSchema,
-  Filter,
-  repository,
-  Where,
+  repository
 } from '@loopback/repository';
+
 import {
+  del,
   get,
   getModelSchemaRef,
+  HttpErrors,
   param,
   patch,
   post,
@@ -46,52 +45,11 @@ export class PetEndpointsController {
     return this.petRepository.create(pet);
   }
 
-  @get('/pets/count')
-  @response(200, {
-    description: 'Pet model count',
-    content: {'application/json': {schema: CountSchema}},
-  })
-  async count(@param.where(Pet) where?: Where<Pet>): Promise<Count> {
-    return this.petRepository.count(where);
-  }
 
-  @get('/pets')
-  @response(200, {
-    description: 'Array of Pet model instances',
-    content: {
-      'application/json': {
-        schema: {
-          type: 'array',
-          items: getModelSchemaRef(Pet, {includeRelations: true}),
-        },
-      },
-    },
-  })
-  async find(@param.filter(Pet) filter?: Filter<Pet>): Promise<Pet[]> {
-    return this.petRepository.find(filter);
-  }
 
-  @patch('/pets')
-  @response(200, {
-    description: 'Pet PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
-  })
-  async updateAll(
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(Pet, {partial: true}),
-        },
-      },
-    })
-    pet: Pet,
-    @param.where(Pet) where?: Where<Pet>,
-  ): Promise<Count> {
-    return this.petRepository.updateAll(pet, where);
-  }
   @get('/users/{id}/pets')
   @response(200, {
-    description: 'Array of Pet model instances for the given user',
+    description: 'obtener mascotas por usuario',
     content: {
       'application/json': {
         schema: {
@@ -113,6 +71,69 @@ export class PetEndpointsController {
     const userPets = await this.petRepository.find({where: {userId: id}});
 
     return userPets;
+  }
+
+
+  @patch('/api/pets/{id}')
+  async updatePetById(
+    @param.path.string('id') id: string,
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(Pet, {partial: true}),
+        },
+      },
+    }) pet: Partial<Pet>,
+  ): Promise<Pet | null> {
+    const existingPet = await this.petRepository.findById(id);
+
+    if (!existingPet) {
+      throw new HttpErrors.NotFound('Usuario no encontrado');
+    }
+
+
+    await this.petRepository.updateById(id, pet);
+
+
+    const updatedPet = await this.petRepository.findById(id);
+
+    return updatedPet || null;
+  }
+
+  @del('/api/pets/{id}')
+  @response(204, {
+    description: 'Eliminar mascota',
+  })
+  async deletePetById(@param.path.string('id') id: string): Promise<boolean> {
+    const pet = await this.petRepository.findById(id);
+
+    if (!pet) {
+      throw new HttpErrors.NotFound('Mascota no encontrada');
+    }
+
+
+    await this.petRepository.deleteById(id);
+
+
+    return true;
+  }
+
+
+  @get('/api/pets')
+  @response(200, {
+    description: 'Array of Pet model instances',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'array',
+          items: getModelSchemaRef(Pet, {includeRelations: true}),
+        },
+      },
+    },
+  })
+  async getAllPets(): Promise<Pet[]> {
+    // Obtener todas las mascotas
+    return this.petRepository.find();
   }
 
 }
