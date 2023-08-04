@@ -4,6 +4,7 @@ import {HttpErrors, del, get, getModelSchemaRef, param, post, requestBody, respo
 import * as bcrypt from 'bcryptjs';
 import {Users} from '../models';
 import {UsersRepository} from '../repositories';
+import { stringify } from 'querystring';
 
 export class UsersController {
   constructor(
@@ -35,11 +36,11 @@ export class UsersController {
       },
     })
     users: Omit<Users, 'id'>,
-  ): Promise<Users> {
+  ): Promise<String | undefined> {
     // Encriptar la contraseña antes de guardarla en la base de datos
     const hashedPassword = await bcrypt.hash(users.password, 10);
     const user = await this.usersRepository.create({...users, password: hashedPassword});
-    return user;
+    return user.id?.valueOf();
   }
 
 
@@ -98,7 +99,7 @@ export class UsersController {
   @response(401, {description: 'No autorizado', content: {'application/json': {schema: {type: 'object', properties: {error: {type: 'string'}}}}}})
   async login(
     @requestBody() credentials: {email: string, password: string},
-  ): Promise<{message: string, user: Users}> {
+  ): Promise<{user: string | undefined}> {
     const {email, password} = credentials;
 
     const user = await this.usersRepository.findOne({where: {email}});
@@ -114,8 +115,10 @@ export class UsersController {
       throw new HttpErrors.Unauthorized('Correo electrónico o contraseña incorrecta');
     }
 
+    let iddd;
+    iddd = user.id?.valueOf();
 
-    return {message: 'Inicio de sesión exitoso', user: user};
+    return {user: iddd};
   }
 
   @get('/api/all')

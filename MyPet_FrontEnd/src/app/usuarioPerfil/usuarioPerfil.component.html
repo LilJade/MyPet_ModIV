@@ -2,9 +2,9 @@
     <div class="myInfo">
         <img src="../../assets/imgs/usuario.png" alt="" class="userPick">
         <div class="dataUser">
-            <h3>Jhon Doe</h3>
+            <h3>{{usuario.Name}}</h3>
             <div>
-                <span>some-email@something.dot</span> <span>21 años</span>
+                <span>{{usuario.email}}</span> <span>{{usuario.role}}</span>
             </div>
         </div>
         <div class="options">
@@ -16,7 +16,19 @@
     <hr>
     <div class="myPets">
         <div class="petsContainer">
-            <div class="cardPet">
+            <div class="cardPet" *ngFor="let mascota of mascotas">
+                <button routerLink="/my_pet" class="optionsPet">
+                    <img src="../../assets/imgs/edit.png" tittle="Editar info." alt="">
+                </button>
+                <img src="../../assets/imgs/perro.png" alt="">
+                <h4>{{mascota.namePet}}</h4>
+                <span class="raza">{{mascota.raza}}</span>
+                <span class="age">{{mascota.description}}</span>
+                <div>
+                    <span>{{mascota.state}}</span>
+                </div>
+            </div>
+<!--            <div class="cardPet">
                 <button routerLink="/my_pet" class="optionsPet">
                     <img src="../../assets/imgs/edit.png" tittle="Editar info." alt="">
                 </button>
@@ -27,70 +39,10 @@
                 <div>
                     <span>SALUDABLE</span>
                 </div>
-            </div>
-            <div class="cardPet">
-                <button routerLink="/my_pet" class="optionsPet">
-                    <img src="../../assets/imgs/edit.png" tittle="Editar info." alt="">
-                </button>
-                <img src="../../assets/imgs/perro.png" alt="">
-                <h4>Kaos</h4>
-                <span class="raza">Pitbull con labrador</span>
-                <span class="age">6 meses</span>
-                <div>
-                    <span>SALUDABLE</span>
-                </div>
-            </div>
-            <div class="cardPet">
-                <button routerLink="/my_pet" class="optionsPet">
-                    <img src="../../assets/imgs/edit.png" tittle="Editar info." alt="">
-                </button>
-                <img src="../../assets/imgs/perro.png" alt="">
-                <h4>Kaos</h4>
-                <span class="raza">Pitbull con labrador</span>
-                <span class="age">6 meses</span>
-                <div>
-                    <span>SALUDABLE</span>
-                </div>
-            </div>
-            <div class="cardPet">
-                <button routerLink="/my_pet" class="optionsPet">
-                    <img src="../../assets/imgs/edit.png" tittle="Editar info." alt="">
-                </button>
-                <img src="../../assets/imgs/perro.png" alt="">
-                <h4>Kaos</h4>
-                <span class="raza">Pitbull con labrador</span>
-                <span class="age">6 meses</span>
-                <div>
-                    <span>SALUDABLE</span>
-                </div>
-            </div>
-            <div class="cardPet">
-                <button routerLink="/my_pet" class="optionsPet">
-                    <img src="../../assets/imgs/edit.png" tittle="Editar info." alt="">
-                </button>
-                <img src="../../assets/imgs/perro.png" alt="">
-                <h4>Kaos</h4>
-                <span class="raza">Pitbull con labrador</span>
-                <span class="age">6 meses</span>
-                <div>
-                    <span>SALUDABLE</span>
-                </div>
-            </div>
-            <div class="cardPet">
-                <button routerLink="/my_pet" class="optionsPet">
-                    <img src="../../assets/imgs/edit.png" tittle="Editar info." alt="">
-                </button>
-                <img src="../../assets/imgs/perro.png" alt="">
-                <h4>Kaos</h4>
-                <span class="raza">Pitbull con labrador</span>
-                <span class="age">6 meses</span>
-                <div>
-                    <span>SALUDABLE</span>
-                </div>
-            </div>
+            </div>-->
         </div>
         <div class="petsOptionsCrud">
-            <button class="btnAddPet" routerLink="/add_pet">Agregar una nueva mascota</button>
+            <button class="btnAddPet" routerLink="/add_pet/{{usuario.id}}">Agregar una nueva mascota</button>
         </div>
     </div>
 </div>

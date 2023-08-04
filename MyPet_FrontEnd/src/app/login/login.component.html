@@ -4,10 +4,10 @@
             <div class="panel leftInit" id="lL">
                 <h3>Iniciar Sesión</h3>
                 <span>Ingresa tu correo y tu contraseña</span>
-                <form action="" class="frmLogin">
-                    <input type="email" class="txtInput" placeholder="Email">
-                    <input type="password" class="txtInput" placeholder="Password">
-                    <input type="submit" value="INICIAR SESIÓN">
+                <form class="frmLogin" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                    <input type="email" class="txtInput" placeholder="Email"  formControlName="email">
+                    <input type="password" id="password" name="password" class="txtInput" placeholder="Password"  formControlName="password">
+                    <input type="submit" value="INICIAR SESIÓN"  [disabled]="formulario.invalid">
                 </form>
             </div>
             <div class="panel rightInit" id="rL">

@@ -4,7 +4,7 @@ import {juggler} from '@loopback/repository';
 const config = {
   name: 'Conection',
   connector: 'mongodb',
-  url: 'mongodb+srv://nilson65alfaro:1234@cluster0.72lqw18.mongodb.net/',
+  url: 'mongodb://127.0.0.1:27017/27017?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.9.0',
   database: 'pets',
   useNewUrlParser: true
 };

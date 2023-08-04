@@ -4,12 +4,12 @@
             <div class="panel leftInit" id="lL">
                 <h3>Registrate</h3>
                 <span>Ingresa tu correo y tu contraseña</span>
-                <form action="" class="frmLogin">
-                    <input type="text" class="txtInput" placeholder="Nombre completo">
-                    <input type="email" class="txtInput" placeholder="Correo">
+                <form [formGroup]="frmAddUser" (ngSubmit)="onSubmit()" class="frmLogin">
+                    <input type="text" formControlName="Name" id="Name" class="txtInput" placeholder="Nombre completo">
+                    <input type="email" formControlName="email" id="email" class="txtInput" placeholder="Correo">
                     <input type="password" class="txtInput" placeholder="Contraseña">
-                    <input type="password" class="txtInput" placeholder="Repite tu contraseña">
-                    <input type="number" class="txtInput" placeholder="Edad">
+                    <input type="password" formControlName="password" id="password" class="txtInput" placeholder="Repite tu contraseña">
+                    <input type="text" formControlName="role" id="role" value="user" hidden="true">
                     <input type="submit" value="REGISTRARME">
                 </form>
             </div>
