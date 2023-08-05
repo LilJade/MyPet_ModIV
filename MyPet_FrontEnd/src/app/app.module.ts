@@ -16,6 +16,7 @@ import { EditUserComponent } from './editUser/editUser.component';
 import { AdminComponent } from './admin/admin.component';
 import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
 import { EliminarPetComponent } from './eliminar-pet/eliminar-pet.component';
+import { CreditsComponent } from './credits/credits.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EliminarPetComponent } from './eliminar-pet/eliminar-pet.component';
     EditUserComponent,
     AdminComponent,
     EliminarUsuarioComponent,
-    EliminarPetComponent
+    EliminarPetComponent,
+    CreditsComponent
   ],
   
   imports: [

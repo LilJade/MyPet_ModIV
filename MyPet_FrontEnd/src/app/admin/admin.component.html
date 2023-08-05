@@ -1,49 +1,10 @@
-
-
   <div class="container">
     <h2>Administrar usuarios</h2>
     <div class="cards">
-        <div class="cardUser">
+        <div class="cardUser" *ngFor="let usuario of usuarios">
             <img src="../../assets/imgs/usuario.png" alt="">
-            <h3>Nombre del Usuario</h3>
-            <button class="btn">Ver Informacion</button>
-            <button class="btn">Eliminar</button>
-        </div>
-        <div class="cardUser">
-            <img src="../../assets/imgs/usuario.png" alt="">
-            <h3>Nombre del Usuario</h3>
-            <button class="btn">Ver Informacion</button>
-            <button class="btn">Eliminar</button>
-        </div>
-        <div class="cardUser">
-            <img src="../../assets/imgs/usuario.png" alt="">
-            <h3>Nombre del Usuario</h3>
-            <button class="btn">Ver Informacion</button>
-            <button class="btn">Eliminar</button>
-        </div>
-        <div class="cardUser">
-            <img src="../../assets/imgs/usuario.png" alt="">
-            <h3>Nombre del Usuario</h3>
-            <button class="btn">Ver Informacion</button>
-            <button class="btn">Eliminar</button>
-        </div>
-        <div class="cardUser">
-            <img src="../../assets/imgs/usuario.png" alt="">
-            <h3>Nombre del Usuario</h3>
-            <button class="btn">Ver Informacion</button>
-            <button class="btn">Eliminar</button>
-        </div>
-        <div class="cardUser">
-            <img src="../../assets/imgs/usuario.png" alt="">
-            <h3>Nombre del Usuario</h3>
-            <button class="btn">Ver Informacion</button>
-            <button class="btn">Eliminar</button>
-        </div>
-        <div class="cardUser">
-            <img src="../../assets/imgs/usuario.png" alt="">
-            <h3>Nombre del Usuario</h3>
-            <button class="btn">Ver Informacion</button>
-            <button class="btn">Eliminar</button>
+            <h3>{{usuario.Name}}</h3>
+            <button class="btn" routerLink="/user_profile/{{usuario.id}}">Ver Informacion</button>
         </div>
     </div>
   </div>
