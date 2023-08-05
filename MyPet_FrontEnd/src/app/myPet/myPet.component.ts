@@ -16,11 +16,14 @@ export class MyPetComponent implements OnInit {
     idUser: String;
     idPet: String;
     modalSwitch: boolean;
+    pet: any;
 
     constructor(private formBuilder: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private modalSS: SwitchService) {}
 
     ngOnInit() {
-        this.initForm();        
+        this.initForm();
+
+        this.getPetData();
     }
 
     initForm() {
@@ -32,14 +35,22 @@ export class MyPetComponent implements OnInit {
             this.idPet=params['pet'];
           });
 
-        this.frmEditPet = this.formBuilder.group({
-          id: [`${this.idPet}`, Validators.nullValidator],
-          namePet: ['', [Validators.required]],
-          raza: ['', [Validators.required]],
-          state: ['', Validators.required],
-          description: ['', Validators.nullValidator],
-          userId: [`${this.idUser}`, Validators.nullValidator]
-        });
+          this.frmEditPet = this.formBuilder.group({
+            id: [`${this.idPet}`, Validators.nullValidator],
+            namePet: ['', [Validators.required]],
+            raza: ['', [Validators.required]],
+            state: ['', Validators.required],
+            description: ['', Validators.nullValidator],
+            userId: [`${this.idUser}`, Validators.nullValidator]
+          });
+    }
+
+    getPetData() {
+      const url = `http://localhost:3000/api/pets/${this.idPet}`;
+
+      this.http.get(url).subscribe (dataPet => {
+          this.pet = dataPet;
+        })
     }
 
     onSubmit() {

@@ -136,4 +136,15 @@ export class PetEndpointsController {
     return this.petRepository.find();
   }
 
+  @get('api/pets/{id}')
+  async findPetById(@param.path.string('id') id: string) : Promise<Pet> {
+    const pet = await this.petRepository.findById(id);
+
+    if(!pet) {
+      throw new HttpErrors.NotFound('Mascota no encontrada!');
+    }
+
+    return pet;
+  }
+
 }

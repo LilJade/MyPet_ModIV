@@ -40,16 +40,14 @@ export class UsuarioPerfilComponent implements OnInit {
       this.idUser=params['id'];
     })
 
-    this.consultarContacto(this.idUser);
+    this.consultarUsuario(this.idUser);
     this.consultarMascotas();
   }
 
-  consultarContacto(idUser: string) {
+  consultarUsuario(idUser: string) {
     const url = `http://localhost:3000/api/users/${idUser}`;
     this.http.get(url).subscribe  (data => {
       this.usuario = data;
-
-      console.log(this.usuario);
     })
   }
 
