@@ -10,7 +10,7 @@
         <div class="options">
             <span>Configuraciones:</span>
             <button routerLink="/edit_user/{{idUser}}" class="btn edit">Editar mi perfil</button>
-            <button routerLink="/login" class="btn delete">Cerrar Sesión</button>
+            <button (click)="closeSession()" routerLink="/login" class="btn delete">Cerrar Sesión</button>
             <button (click)="openModal()" class="btn delete">Eliminar mi perfil</button>
         </div>
     </div>

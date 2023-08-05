@@ -5,7 +5,7 @@
     <div class="dataPet">
         <form [formGroup]="frmEditPet" (ngSubmit)="onSubmit()" class="frmPet">
             <h5>Actualiza los datos de tu mejor amigo!</h5>
-            <input type="text" value="{{pet.namePet}}" formControlName="namePet" name="" id="" class="txtInput" placeholder="Nombre de mi mascota">
+            <input type="text" formControlName="namePet" name="" id="" class="txtInput" placeholder="Nombre de mi mascota">
             <input type="text" formControlName="raza" name="" id="" class="txtInput" placeholder="Raza de mi mascota">
             <input type="text" formControlName="state" name="" id="" class="txtInput" placeholder="Estado de mi mascota">
             <input type="text" formControlName="description" name="" id="" class="txtInput" placeholder="Descripción del estado...">

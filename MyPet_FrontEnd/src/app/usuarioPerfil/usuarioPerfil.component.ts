@@ -65,4 +65,8 @@ export class UsuarioPerfilComponent implements OnInit {
     this.modalSwitch = true;
   }
 
+  closeSession() {
+    this.idUser = "";
+  }
+
 }

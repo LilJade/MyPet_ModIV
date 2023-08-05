@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
           (error) => {
             // Manejar errores
             console.error('Error al enviar el formulario:', error);
+            alert(error.error.error.message)
           }
         );
     }
